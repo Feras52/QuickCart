@@ -1,0 +1,64 @@
+
+#navbarid p {
+  position: absolute;
+  left: 14vh;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgba(163, 127, 207, 0.646);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#navbarid img {
+  width: 12vh;
+  height: 10vh;
+  position: absolute;
+  left: 2vh;
+  top: 0%;
+  border-radius: 7px;
+   
+}
+#navbarid ul {
+  margin-top: 0;
+  list-style: none;
+  position: absolute;
+  right: 10vh;
+  top: 0%;
+  font-weight: bold;
+}
+#navbarid li {
+  display: inline-block;
+}
+#navbarid nav ul li a:hover {
+  background-color: white;
+  color: rgb(173, 173, 233);
+}
+#navbarid nav ul li a {
+  font-size: 20px;
+  display: block;
+  text-align: center;
+  padding: 24px 27px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.5s, color 0.5s;
+}
+#navbarid nav {
+  margin-top: -0.6%;
+  margin-left: -0.6%;
+  margin-right: -0.5%;
+  position: relative;
+  height: 10vh;
+  background-image: linear-gradient(
+    to left,
+    rgb(173, 173, 233),
+    rgb(194, 223, 237)
+  );
+}
+
+#homeLink a {
+   position: absolute;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgba(163, 127, 207, 0.646);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}

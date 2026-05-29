@@ -1,0 +1,48 @@
+#card_container {
+  background-color: cyan;
+  border-radius: 10px;
+  margin: 6%;
+  padding: 0px;
+  text-align: center;
+  position: relative;
+}
+#card_container img {
+  height: 250px;
+  width: 100%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  border-radius: 8px 8px 0px 0px;
+  margin: 0;
+}
+#card_container h2 {
+  position: absolute;
+  left: 0;
+  border-radius: 0px 8px 8px 0px;
+  top:325px;
+  font-size: xx-large;
+  background-color: rgb(173, 173, 233);
+  padding: 1%;
+}
+#card_container h1{
+  margin-top: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#card_container h3{
+  margin-top: 80px;
+}
+#card_container button{
+    border-radius: 7px;
+    border: none;
+    width: 120px;
+    height: 45px;
+    padding: 3%;
+    margin: 4%;
+    cursor: pointer;
+    transition: width 0.2s, height 0.2s;
+    font-weight: bold;
+
+}
+#card_container button:hover{
+    width: 125px;
+    height: 50px;
+}

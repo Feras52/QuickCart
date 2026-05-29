@@ -1,0 +1,47 @@
+.slider-container{
+    width: 98%;
+}
+.slider-container img{
+    height: 400px;
+    width: 460px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.title{
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 15px;
+}
+.phrase{
+    font-size: 18px;
+}
+.container{
+    position: relative;
+    height: 75vh;
+    
+}
+.left_container{
+    position: absolute;
+    left: 5%;
+    top: 12%;
+    width: 50%;
+}
+.right_container{
+    position: absolute;
+    right: 3%;
+    top: 8%;
+    width: 50%;
+}
+
+.card_container img{
+    height: 150px;
+    width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.card_container{
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 6%;
+    margin-right: 6%;
+}
