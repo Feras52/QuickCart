@@ -28,11 +28,13 @@
 #navbarid li {
   display: inline-block;
 }
-#navbarid nav ul li a:hover {
+#navbarid nav ul li a:hover, 
+#navbarid nav ul li .nav-btn:hover {
   background-color: white;
   color: rgb(173, 173, 233);
 }
-#navbarid nav ul li a {
+#navbarid nav ul li a, 
+#navbarid nav ul li .nav-btn {
   font-size: 20px;
   display: block;
   text-align: center;
@@ -40,6 +42,13 @@
   text-decoration: none;
   color: white;
   transition: background-color 0.5s, color 0.5s;
+
+  background: none;
+  border: none;
+  font-family: inherit; 
+  font-weight: inherit;
+  cursor: pointer;  
+  height: 100%;
 }
 #navbarid nav {
   margin-top: -0.6%;

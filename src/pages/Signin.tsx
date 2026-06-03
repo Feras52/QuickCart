@@ -1,17 +1,60 @@
 import "./Login.css";
-import {Link} from 'react-router-dom'
+
+import {Link, useNavigate} from 'react-router-dom'
+import {useState} from "react"
+
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../config/firebase";
+
 function Signin() {
+
+  const [username,setUsername] = useState("");
+  const [email,setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error,setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSignin = async(e: React.FormEvent) => {
+    e.preventDefault(); //so page wont refresh
+    setError("");
+
+    if (!username || !email || !password){
+      setError("Fill all inputs! ");
+      return;
+    }
+
+    try{
+      setLoading(true);
+      
+      await createUserWithEmailAndPassword(auth,email,password);
+
+      navigate("/Login");
+    }
+    catch{
+      setError("Something went wrong! ");
+    }
+    finally{
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="loginSignin_container">
     <NavBar/>
       <div id="container">
         <p id="login">Sign In</p>
 
+        <div style={{ color: "red", textAlign: "center", marginBottom: "15px", fontWeight: "bold" }}>{error}</div>
+
+        <form onSubmit={handleSignin}>
         <div className="info_container">
-          <input type="text" placeholder="Username" />
+          <input onChange={(e) => {setUsername(e.target.value)}} value={username} type="text" placeholder="Username" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -29,7 +72,7 @@ function Signin() {
         </div>
 
         <div className="info_container">
-          <input type="email" placeholder="Email" />
+          <input onChange={(e) => {setEmail(e.target.value)}} value={email}  type="email" placeholder="Email" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -43,7 +86,7 @@ function Signin() {
           </svg>
         </div>
         <div className="info_container">
-          <input type="password" placeholder="Password" />
+          <input onChange={(e) => {setPassword(e.target.value)}} value={password} type="password" placeholder="Password" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -58,11 +101,12 @@ function Signin() {
             />
           </svg>
         </div>
-        <button>Sign in</button>
+        <button type="submit" >Sign in</button>
         <br />
 
         <p>Already have an account?</p><br />
         <Link to="/Login" >Log in</Link>
+        </form>
       </div>
       <Footer/>
     </div>
