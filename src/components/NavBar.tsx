@@ -6,11 +6,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 
 import { useAuth } from "../context/AuthContext";
+import { useCartStore } from "../store/cartStore";
 
 function NavBar() {
 
   const {user} = useAuth();
   const navigate = useNavigate();
+
+  const items = useCartStore((state) => state.items);
+  const cartCount = items.reduce((total, item) => total + item.quantity, 0);
 
   const handleLogout = async () => {
     try {
@@ -31,6 +35,7 @@ function NavBar() {
         <ul>
           <li> <Link to="/Home" >Home</Link> </li>
           <li><a href="">Profile</a></li>
+          <li><Link to="/Cart">Cart{cartCount > 0 && <span className="cart_badge">{cartCount}</span>}</Link></li>
           <li><Link to="/AboutUs" >About us</Link></li>
           {user ? (
           // If logged in then turn the button into a Logout 
