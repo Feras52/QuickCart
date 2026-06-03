@@ -1,10 +1,51 @@
 
 import "./Login.css";
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+import {useState } from "react";
+
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
+
+
 function Login() {
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogin = async(e:React.FormEvent) => {
+    e.preventDefault(); // no refreshing page
+    setError("");
+
+    if (!email || !password) {
+      setError("Fill all inputs! ");
+      return;
+    }
+
+    try{
+      setLoading(true);
+
+      await signInWithEmailAndPassword(auth,email,password);
+      
+      navigate("/");
+    }
+    catch{
+      setError("Something went wrong !");
+    }
+    finally{
+      setLoading(false);
+    }
+
+  };
+
   return (
     <div className="loginSignin_container">
 
@@ -12,8 +53,12 @@ function Login() {
         <NavBar />
         <div id="container">
           <p id="login">Log In</p>
+
+          <div style={{ color: "red", textAlign: "center", marginBottom: "15px", fontWeight: "bold" }}>{error}</div>
+
+          <form onSubmit={handleLogin}>
           <div className="info_container">
-            <input type="email" placeholder="Email" />
+            <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Email" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -27,7 +72,7 @@ function Login() {
             </svg>
           </div>
           <div className="info_container">
-            <input type="password" placeholder="Password" />
+            <input onChange={(e) => {setPassword(e.target.value)}} value={password} type="password" placeholder="Password" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -47,6 +92,7 @@ function Login() {
 
           <p id="signin">Don't have an account? </p><br />
           <Link to="/Signin" >Sign in</Link>
+          </form>
         </div>
       </div>
       <Footer />
