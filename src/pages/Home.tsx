@@ -79,7 +79,8 @@ function Home() {
           <Slider {...settings}>
             {items.map((item: any) => (
               <Card
-                key={item.name}
+                key={item.id}
+                id={item.id}
                 name={item.name}
                 price={item.price}
                 category={item.category}
