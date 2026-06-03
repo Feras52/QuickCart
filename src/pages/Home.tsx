@@ -80,6 +80,7 @@ function Home() {
             {items.map((item: any) => (
               <Card
                 key={item.name}
+                id={item.id}
                 name={item.name}
                 price={item.price}
                 category={item.category}
