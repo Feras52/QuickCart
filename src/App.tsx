@@ -7,6 +7,7 @@ import Cart from "./pages/Cart.tsx";
 import Checkout from "./pages/Checkout";
 
 import { Routes, Route } from "react-router-dom";
+import OrderConfirmation from "./pages/OrderConfirmation.tsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/OrderConfirmation/:orderId" element={<OrderConfirmation/>} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Signin" element={<Signin />} />

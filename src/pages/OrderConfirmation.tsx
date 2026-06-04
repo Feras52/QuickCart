@@ -7,6 +7,8 @@ import { db } from "../config/firebase";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+import "./OrderConfirmation.css";
+
 function OrderConfirmation() {
   type OrderItem = {
     id: number;
@@ -76,7 +78,7 @@ function OrderConfirmation() {
     return (
       <>
         <NavBar />
-        <main>
+        <main className="confirmation_container" >
           <h1>Loading order...</h1>
         </main>
         <Footer />
@@ -88,7 +90,7 @@ function OrderConfirmation() {
     return (
       <>
         <NavBar />
-        <main>
+        <main className="confirmation_container" >
           <h1>{error}</h1>
           <button onClick={() => navigate("/Home")}>Back to Home</button>
         </main>
@@ -100,19 +102,19 @@ function OrderConfirmation() {
     <>
       <NavBar />
 
-      <main>
+      <main className="confirmation_container" >
         <h1>Order Placed Successfully</h1>
 
-        <section>
+        <section className="confirmation_section">
           <h2>Order ID</h2>
           <p>{orderId}</p>
         </section>
 
-        <section>
+        <section className="confirmation_section">
           <h2>Order Summary</h2>
 
           {order.items.map((item) => (
-            <div key={item.id}>
+            <div className="confirmation_item" key={item.id}>
               <img src={item.imageUrl} alt={item.name} width="80" />
               <p>{item.name}</p>
               <p>Quantity: {item.quantity}</p>
@@ -123,7 +125,7 @@ function OrderConfirmation() {
           <h3>Total: ${order.totalPrice.toFixed(2)}</h3>
         </section>
 
-        <section>
+        <section className="confirmation_section">
           <h2>Shipping Address</h2>
           <p>{order.shippingAddress.fullName}</p>
           <p>{order.shippingAddress.email}</p>
@@ -134,12 +136,12 @@ function OrderConfirmation() {
           <p>{order.shippingAddress.country}</p>
         </section>
 
-        <section>
+        <section className="confirmation_section">
           <h2>Estimated Delivery</h2>
           <p>{estimatedDeliveryDate.toDateString()}</p>
         </section>
 
-        <button onClick={() => navigate("/Home")}>Back to Home</button>
+        <button className="confirmation_btn" onClick={() => navigate("/Home")}>Back to Home</button>
       </main>
 
       <Footer />
