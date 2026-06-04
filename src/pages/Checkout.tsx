@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 
 import { useCartStore } from "../store/cartStore";
 
+import "./Checkout.css";
+
 function Checkout() {
   const navigate = useNavigate();
 
@@ -57,7 +59,7 @@ function Checkout() {
       <>
         <NavBar />
 
-        <main>
+        <main className="checkout_container" >
           <h1>Your cart is empty</h1>
           <button onClick={() => navigate("/Home")}>Continue Shopping</button>
         </main>
@@ -71,14 +73,14 @@ function Checkout() {
     <>
       <NavBar />
 
-      <main>
+      <main className="checkout_container" >
         <h1>Checkout</h1>
-
-        <section>
+        <div className="checkout_layout">
+        <section className="order_summary">
           <h2>Order Summary</h2>
 
           {items.map((item) => (
-            <div key={item.id}>
+            <div className="summary_item" key={item.id}>
               <img src={item.imageUrl} alt={item.name} width="80" />
               <p>{item.name}</p>
               <p>Quantity: {item.quantity}</p>
@@ -89,12 +91,12 @@ function Checkout() {
           <h3>Total: ${getTotalPrice().toFixed(2)}</h3>
         </section>
 
-        <section>
+        <section className="shipping_form">
           <h2>Shipping Address</h2>
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="checkout_error" style={{ color: "red" }}>{error}</p>}
 
-          <form onSubmit={handlePlaceOrder}>
+          <form onSubmit={handlePlaceOrder} className="checkout_form" >
             <input type="text" placeholder="Full name" value={fullName} onChange={(e) => setFullName(e.target.value)}/>
 
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -107,16 +109,17 @@ function Checkout() {
 
             <input type="text" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)}/>
 
-            <section>
+            <section className="payment_placeholder" >
               <h2>Payment</h2>
               <p>Payment will be added later.</p>
             </section>
 
-            <button type="submit">
+            <button className="place_order_btn" type="submit">
               {loading ? "Placing Order..." : "Place Order"}
             </button>
           </form>
         </section>
+        </div>
       </main>
 
       <Footer />
