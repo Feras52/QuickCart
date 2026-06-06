@@ -9,7 +9,13 @@ import { useCartStore } from "../store/cartStore";
 import { createOrder } from "../services/orderService";
 import { useAuth } from "../context/AuthContext";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import StripePaymentForm from "../components/StripePaymentForm";
+
 import "./Checkout.css";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 function Checkout() {
   const { user } = useAuth();
@@ -29,35 +35,49 @@ function Checkout() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handlePlaceOrder = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const validateCheckout = () => {
     setError("");
 
     if (!user) {
       setError("You must be logged in to place an order.");
-      return;
+      return false;
     }
 
     if (!fullName || !email || !address || !city || !zipCode || !country) {
       setError("Please fill all shipping fields.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handlePaymentSuccess = async (paymentId: string) => {
+    if (!user) {
+      setError("You must be logged in to place an order.");
       return;
     }
 
     try {
       setLoading(true);
 
-      const orderId = await createOrder(user.uid, items, getTotalPrice(), {
-        fullName,
-        email,
-        address,
-        city,
-        zipCode,
-        country,
-      });
+      const orderId = await createOrder(
+        user.uid,
+        items,
+        getTotalPrice(),
+        {
+          fullName,
+          email,
+          address,
+          city,
+          zipCode,
+          country,
+        },
+        paymentId,
+      );
 
       navigate(`/OrderConfirmation/${orderId}`);
     } catch {
-      setError("Something went wrong while placing your order.");
+      setError("Payment succeeded, but saving the order failed.");
     } finally {
       setLoading(false);
     }
@@ -109,7 +129,10 @@ function Checkout() {
               </p>
             )}
 
-            <form onSubmit={handlePlaceOrder} className="checkout_form">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="checkout_form"
+            >
               <input
                 type="text"
                 placeholder="Full name"
@@ -152,14 +175,14 @@ function Checkout() {
                 onChange={(e) => setCountry(e.target.value)}
               />
 
-              <section className="payment_placeholder">
-                <h2>Payment</h2>
-                <p>Payment will be added later.</p>
-              </section>
-
-              <button className="place_order_btn" type="submit">
-                {loading ? "Placing Order..." : "Place Order"}
-              </button>
+              <Elements stripe={stripePromise}>
+                <StripePaymentForm
+                  amount={getTotalPrice()}
+                  disabled={loading}
+                  onBeforePay={validateCheckout}
+                  onSuccess={handlePaymentSuccess}
+                />
+              </Elements>
             </form>
           </section>
         </div>

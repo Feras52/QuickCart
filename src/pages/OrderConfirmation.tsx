@@ -33,6 +33,7 @@ function OrderConfirmation() {
     shippingAddress: ShippingAddress;
     status: string;
     paymentStatus: string;
+    paymentId?: string; // ? == optional
   };
 
   const { orderId } = useParams();
@@ -78,7 +79,7 @@ function OrderConfirmation() {
     return (
       <>
         <NavBar />
-        <main className="confirmation_container" >
+        <main className="confirmation_container">
           <h1>Loading order...</h1>
         </main>
         <Footer />
@@ -90,7 +91,7 @@ function OrderConfirmation() {
     return (
       <>
         <NavBar />
-        <main className="confirmation_container" >
+        <main className="confirmation_container">
           <h1>{error}</h1>
           <button onClick={() => navigate("/Home")}>Back to Home</button>
         </main>
@@ -102,7 +103,7 @@ function OrderConfirmation() {
     <>
       <NavBar />
 
-      <main className="confirmation_container" >
+      <main className="confirmation_container">
         <h1>Order Placed Successfully</h1>
 
         <section className="confirmation_section">
@@ -137,11 +138,20 @@ function OrderConfirmation() {
         </section>
 
         <section className="confirmation_section">
+          <h2>Payment Status</h2>
+          <p>{order.paymentStatus === "paid" ? "Paid" : "Pending"}</p>
+          <p>Order Status: {order.status}</p>
+          {order.paymentId && <p>Payment ID: {order.paymentId}</p>}
+        </section>
+
+        <section className="confirmation_section">
           <h2>Estimated Delivery</h2>
           <p>{estimatedDeliveryDate.toDateString()}</p>
         </section>
 
-        <button className="confirmation_btn" onClick={() => navigate("/Home")}>Back to Home</button>
+        <button className="confirmation_btn" onClick={() => navigate("/Home")}>
+          Back to Home
+        </button>
       </main>
 
       <Footer />
