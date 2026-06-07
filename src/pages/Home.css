@@ -6,9 +6,9 @@ body {
     rgb(194, 223, 237)
   );
 }
-main{
+.home_main {
   width: 98%;
-  height: 1200px;
+  min-height: 1200px;
 }
 #category_container{
   margin-top: 3%;

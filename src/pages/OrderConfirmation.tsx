@@ -151,7 +151,7 @@ function OrderConfirmation() {
 
         <button className="confirmation_btn" onClick={() => navigate("/Home")}>
           Back to Home
-        </button>
+        </button><br /><br />
       </main>
 
       <Footer />

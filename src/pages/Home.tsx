@@ -49,7 +49,7 @@ function Home() {
     <>
       <NavBar />
 
-      <main>
+      <main className="home_main" >
         <div id="searchbar_container">
           <input
             id="search_input"

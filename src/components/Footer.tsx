@@ -5,7 +5,7 @@ function Footer (){
         <div id="footer_container">
             <div id="footer_info_container">
                 <div className="logo_container" >
-                    <img src="public\footer_logo.png" alt="Logo" />
+                    <img src="public\logo.png" alt="Logo" />
                     <p>QuickCart</p> 
                 </div>
                 <div className="media_container" >
