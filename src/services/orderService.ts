@@ -24,6 +24,7 @@ export const createOrder = async (
   cartItems: OrderItem[],
   totalPrice: number,
   shippingAddress: ShippingAddress,
+  paymentId: string,
 ) => {
   //save order info into the collection 'orders' in firestore (auto creation of orderID by addDoc )
   const orderRef = await addDoc(collection(db, "orders"), {
@@ -31,8 +32,9 @@ export const createOrder = async (
     items: cartItems,
     totalPrice,
     shippingAddress,
-    status: "pending",
-    paymentStatus: "pending",
+    status: "completed",
+    paymentStatus: "paid",
+    paymentId,
     createdAt: serverTimestamp(),
   });
 

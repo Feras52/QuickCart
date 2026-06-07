@@ -7,8 +7,8 @@
     margin-top: 2%;
 }
 #footer_container img{
-    width: 50px;
-    height: 50px;
+    width: 72px;
+    height: 70px;
     border-radius: 10px;
 }
 #copyright_container{
@@ -29,7 +29,7 @@
 }
 .logo_container p{
     font-size: 20px;
-    margin-left: -18%;
+    margin-left: -7%;
     margin-top: -1%;
 }
 .media_container{
