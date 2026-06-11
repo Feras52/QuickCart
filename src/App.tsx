@@ -3,6 +3,7 @@ import Login from "./pages/Login.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import Home from "./pages/Home.tsx";
 import Cart from "./pages/Cart.tsx";
+import Profile from "./pages/Profile";
 
 import Checkout from "./pages/Checkout";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/OrderConfirmation/:orderId" element={<OrderConfirmation/>} />
+        <Route path="/Profile" element={<Profile />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Signin" element={<Signin />} />

@@ -34,7 +34,7 @@ function NavBar() {
          <Link to="/Home" > <img src="../../public/logo.png" alt="Logo" /></Link>
         <ul>
           <li> <Link to="/Home" >Home</Link> </li>
-          <li><a href="">Profile</a></li>
+          <li><Link to="/Profile">Profile</Link></li>
           <li><Link to="/Cart">Cart{cartCount > 0 && <span className="cart_badge">{cartCount}</span>}</Link></li>
           <li><Link to="/AboutUs" >About us</Link></li>
           {user ? (
