@@ -30,13 +30,13 @@ function NavBar() {
   return (
     <div id="navbarid">
       <nav>
-        <p id="homeLink"> <Link  to="/Home" >QuickCart</Link> </p>
-         <Link to="/Home" > <img src="../../public/logo.png" alt="Logo" /></Link>
+        <p id="homeLink"> <Link  to="/" >QuickCart</Link> </p>
+         <Link to="/" > <img src="../../public/logo.png" alt="Logo" /></Link>
         <ul>
-          <li> <Link to="/Home" >Home</Link> </li>
+          <li> <Link to="/" >Home</Link> </li>
+          <li> <Link to="/Shop" >Shop</Link> </li>
           <li><Link to="/Profile">Profile</Link></li>
           <li><Link to="/Cart">Cart{cartCount > 0 && <span className="cart_badge">{cartCount}</span>}</Link></li>
-          <li><Link to="/AboutUs" >About us</Link></li>
           {user ? (
           // If logged in then turn the button into a Logout 
           <li><button className="nav-btn" onClick={handleLogout}>Logout </button></li>) : (

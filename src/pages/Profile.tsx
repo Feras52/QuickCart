@@ -112,7 +112,7 @@ function Profile() {
       <NavBar />
 
       <main className="profile_container">
-        <center><img src="../../public/profile.png" alt="" />
+        <center id="profile_container" ><img src="../../public/profile.png" alt="" />
         <p id="profile_name" >{userInformation?.username || "No username saved"}</p></center>
 
         <section className="profile_card">

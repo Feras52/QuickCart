@@ -4,13 +4,13 @@ import { data } from "../../public/products.tsx";
 import Card from "../components/Card";
 
 import { useState } from "react";
-import "./Home.css";
+import "./Shop.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-function Home() {
+function Shop() {
   const settings = {
     className: "center",
     centerMode: true,
@@ -94,4 +94,4 @@ function Home() {
     </>
   );
 }
-export default Home;
+export default Shop;
