@@ -1,48 +1,87 @@
 #card_container {
-  background-color: cyan;
-  border-radius: 10px;
-  margin: 6%;
-  padding: 0px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 12px;
+  padding: 0 0 20px;
   text-align: center;
   position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-#card_container img {
-  height: 250px;
-  width: 100%;
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  border-radius: 8px 8px 0px 0px;
-  margin: 0;
-}
-#card_container h2 {
-  position: absolute;
-  left: 0;
-  border-radius: 0px 8px 8px 0px;
-  top:325px;
-  font-size: xx-large;
-  background-color: rgb(173, 173, 233);
-  padding: 1%;
-}
-#card_container h1{
-  margin-top: 40px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-#card_container h3{
-  margin-top: 80px;
-}
-#card_container button{
-    border-radius: 7px;
-    border: none;
-    width: 120px;
-    height: 45px;
-    padding: 3%;
-    margin: 4%;
-    cursor: pointer;
-    transition: width 0.2s, height 0.2s;
-    font-weight: bold;
 
+#card_container:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
-#card_container button:hover{
-    width: 125px;
-    height: 50px;
+
+#card_container img {
+  width: 100%;
+  height: 220px;
+  margin: 0;
+  object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--bg-soft);
+}
+
+#card_container h1 {
+  margin: 16px 16px 6px;
+  font-family: var(--font);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+#card_container h2 {
+  position: static;
+  margin: 4px 0 8px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+#card_container h3 {
+  margin: 0 0 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+#card_container button {
+  border: none;
+  border-radius: var(--radius-sm);
+  width: auto;
+  min-width: 140px;
+  height: auto;
+  padding: 12px 20px;
+  margin: 0 4%;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  background-color: var(--accent);
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+#card_container button:hover {
+  width: auto;
+  height: auto;
+  background-color: var(--accent-hover);
+  transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+  #card_container {
+    margin: 8px 4px;
+  }
+
+  #card_container img {
+    height: 180px;
+  }
 }

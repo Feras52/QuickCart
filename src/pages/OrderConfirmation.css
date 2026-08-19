@@ -1,71 +1,90 @@
 .confirmation_container {
-  width: 90%;
+  width: min(800px, 92%);
   min-height: 70vh;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 32px auto;
+  padding: 8px 0 48px;
 }
 
 .confirmation_container h1 {
-  text-align: center;
-  color: white;
-  margin-bottom: 30px;
+  text-align: left;
+  color: var(--text);
+  margin: 0 0 28px;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .confirmation_section {
-  background-color: cyan;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
 }
 
 .confirmation_section h2 {
-  margin-top: 0;
-  color: rgb(16, 16, 71);
+  margin: 0 0 16px;
+  color: var(--text);
+  font-size: 1.15rem;
 }
 
 .confirmation_item {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 15px;
+  grid-template-columns: 72px 1fr;
+  gap: 4px 14px;
   align-items: center;
-  border-bottom: 1px solid rgba(16, 16, 71, 0.2);
-  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
 }
 
 .confirmation_item img {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
+  grid-row: span 3;
+  background: var(--bg-soft);
 }
 
 .confirmation_item p {
-  margin: 5px 0;
-  font-weight: bold;
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.confirmation_item p:first-of-type {
+  font-weight: 600;
+  color: var(--text);
 }
 
 .confirmation_section h3 {
   text-align: right;
-  color: rgb(16, 16, 71);
-  font-size: 24px;
+  color: var(--primary);
+  font-size: 1.35rem;
+  margin: 18px 0 0;
 }
 
 .confirmation_btn {
   border: none;
-  border-radius: 7px;
-  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
   cursor: pointer;
-  font-weight: bold;
-  background-color: white;
-  transition: background-color 0.2s, transform 0.2s;
+  font-weight: 600;
+  background-color: var(--accent);
+  color: white;
+  transition: background-color 0.2s, transform 0.15s;
 }
 
 .confirmation_btn:hover {
-  background-color: rgb(173, 173, 233);
+  background-color: var(--accent-hover);
   color: white;
-  transform: scale(1.05);
+  transform: none;
 }
 
-.confirmation_container {
-  padding-bottom: 40px;
+@media (max-width: 600px) {
+  .confirmation_container h1 {
+    font-size: 1.5rem;
+  }
 }

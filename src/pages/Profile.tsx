@@ -8,6 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { getUserInformation, getUserOrders } from "../services/userService";
 
 import "./Profile.css";
+import { FieldPath } from "firebase/firestore";
 
 type UserInformation = {
   username?: string;
@@ -111,7 +112,8 @@ function Profile() {
       <NavBar />
 
       <main className="profile_container">
-        <h1>Profile</h1>
+        <center><img src="../../public/profile.png" alt="" />
+        <p id="profile_name" >{userInformation?.username || "No username saved"}</p></center>
 
         <section className="profile_card">
           <h2>User Info</h2>

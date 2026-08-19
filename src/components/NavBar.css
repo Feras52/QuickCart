@@ -1,84 +1,130 @@
+#navbarid nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--nav-height);
+  padding: 0 28px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+}
 
-#navbarid p {
-  position: absolute;
-  left: 12vh;
-  top: 1vh;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: rgba(163, 127, 207, 0.646);
-  font-size: 20px;
-  font-weight: bold;
+#navbarid nav > a {
+  display: flex;
+  align-items: center;
+  order: -1;
 }
 
 #navbarid img {
-  width: 86px;
-  height: 80px;
-  position: absolute;
-  left: 2vh;
-  top: 0%;
-  border-radius: 7px;
-   
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  position: static;
 }
+
+#navbarid p,
+#homeLink a {
+  position: static;
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+#navbarid p {
+  display: flex;
+  align-items: center;
+}
+
 #navbarid ul {
-  margin-top: 0;
   list-style: none;
-  position: absolute;
-  right: 10vh;
-  top: 0%;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 0 auto;
+  padding: 0;
+  position: static;
 }
+
 #navbarid li {
   display: inline-block;
 }
-#navbarid nav ul li a:hover, 
-#navbarid nav ul li .nav-btn:hover {
-  background-color: white;
-  color: rgb(173, 173, 233);
-}
-#navbarid nav ul li a, 
-#navbarid nav ul li .nav-btn {
-  font-size: 20px;
-  display: block;
-  text-align: center;
-  padding: 24px 27px;
-  text-decoration: none;
-  color: white;
-  transition: background-color 0.5s, color 0.5s;
 
+#navbarid nav ul li a,
+#navbarid nav ul li .nav-btn {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
   background: none;
   border: none;
-  font-family: inherit; 
-  font-weight: inherit;
-  cursor: pointer;  
-  height: 100%;
-}
-#navbarid nav {
-  margin-top: -0.6%;
-  margin-left: -0.6%;
-  margin-right: -0.5%;
-  position: relative;
-  height: 10vh;
-  background-image: linear-gradient(
-    to left,
-    rgb(173, 173, 233),
-    rgb(194, 223, 237)
-  );
+  border-radius: var(--radius-sm);
+  height: auto;
+  transition: color 0.2s, background-color 0.2s;
 }
 
-#homeLink a {
-   position: absolute;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: rgba(163, 127, 207, 0.646);
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
+#navbarid nav ul li a:hover,
+#navbarid nav ul li .nav-btn:hover {
+  color: var(--primary);
+  background-color: var(--bg-soft);
 }
 
 .cart_badge {
-  background-color: cyan;
-  color: rgb(16, 16, 71);
-  border-radius: 50%;
-  padding: 2px 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
   margin-left: 6px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 0 6px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #navbarid nav {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--nav-height);
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  #navbarid ul {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  #navbarid nav ul li a,
+  #navbarid nav ul li .nav-btn {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  #navbarid img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #navbarid p,
+  #homeLink a {
+    font-size: 1.15rem;
+  }
 }

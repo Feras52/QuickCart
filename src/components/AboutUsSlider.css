@@ -1,47 +1,108 @@
-.slider-container{
-    width: 98%;
-}
-.slider-container img{
-    height: 400px;
-    width: 460px;
-    border-radius: 10%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
-.title{
-    font-size: 50px;
-    font-weight: bold;
-    letter-spacing: 15px;
-}
-.phrase{
-    font-size: 18px;
-}
-.container{
-    position: relative;
-    height: 75vh;
-    
-}
-.left_container{
-    position: absolute;
-    left: 5%;
-    top: 12%;
-    width: 50%;
-}
-.right_container{
-    position: absolute;
-    right: 3%;
-    top: 8%;
-    width: 50%;
+.slider-container {
+  width: min(1100px, 94%);
+  margin: 0 auto;
+  padding: 20px 0 40px;
 }
 
-.card_container img{
-    height: 150px;
-    width: 150px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+.slider-container img {
+  height: auto;
+  max-height: 380px;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow-hover);
 }
 
-.card_container{
-    display: inline-block;
-    font-size: 20px;
-    margin-left: 6%;
-    margin-right: 6%;
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0;
+}
+
+.phrase {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 420px;
+}
+
+.container {
+  position: relative;
+  min-height: 420px;
+  height: auto;
+  padding: 24px 0;
+}
+
+.left_container,
+.right_container {
+  position: static;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  padding: 12px 20px;
+}
+
+.left_container {
+  width: min(48%, 480px);
+}
+
+.right_container {
+  width: min(48%, 480px);
+  text-align: center;
+}
+
+.card_container {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 16px 20px;
+  color: var(--text);
+  vertical-align: top;
+}
+
+.card_container img {
+  height: 140px;
+  width: 140px;
+  border-radius: var(--radius);
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+
+.card_container p {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.card_container i {
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .container {
+    min-height: auto;
+  }
+
+  .left_container,
+  .right_container {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 8px;
+  }
+
+  .phrase {
+    margin: 0 auto;
+  }
+
+  .slider-container img {
+    max-height: 260px;
+  }
+
+  .card_container {
+    margin: 12px;
+  }
 }

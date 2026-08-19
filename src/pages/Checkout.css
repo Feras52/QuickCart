@@ -1,117 +1,163 @@
 .checkout_container {
-  width: 90%;
+  width: min(1100px, 92%);
   min-height: 70vh;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 32px auto;
+  padding: 8px 0 40px;
 }
 
 .checkout_container h1 {
-  text-align: center;
-  color: white;
-  margin-bottom: 30px;
+  text-align: left;
+  color: var(--text);
+  margin: 0 0 28px;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .checkout_layout {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 30px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
   align-items: start;
 }
 
 .order_summary,
 .shipping_form {
-  background-color: cyan;
-  border-radius: 10px;
-  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.order_summary {
+  position: sticky;
+  top: calc(var(--nav-height) + 16px);
 }
 
 .order_summary h2,
 .shipping_form h2 {
-  margin-top: 0;
-  color: rgb(16, 16, 71);
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 650;
 }
 
 .summary_item {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 15px;
+  grid-template-columns: 72px 1fr;
+  gap: 4px 14px;
   align-items: center;
-  border-bottom: 1px solid rgba(16, 16, 71, 0.2);
-  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
 }
 
 .summary_item img {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
+  grid-row: span 3;
+  background: var(--bg-soft);
 }
 
 .summary_item p {
-  margin: 5px 0;
-  font-weight: bold;
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.summary_item p:first-of-type {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
 }
 
 .order_summary h3 {
   text-align: right;
-  font-size: 24px;
-  color: rgb(16, 16, 71);
+  font-size: 1.35rem;
+  color: var(--primary);
+  margin: 18px 0 0;
 }
 
 .checkout_form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .checkout_form input {
-  height: 42px;
-  border: none;
-  border-radius: 7px;
-  padding: 0 12px;
-  font-size: 16px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.checkout_form input::placeholder {
+  color: #94a3b8;
 }
 
 .checkout_form input:focus {
-  outline: 2px solid rgb(173, 173, 233);
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
 }
 
 .payment_placeholder {
-  background-color: rgba(16, 16, 71, 0.855);
-  color: white;
-  border-radius: 10px;
-  padding: 15px;
+  background-color: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
   margin-top: 10px;
 }
 
 .payment_placeholder h2 {
-  color: white;
+  color: var(--text);
 }
 
 .checkout_error {
-  color: red;
-  font-weight: bold;
+  color: var(--danger);
+  font-weight: 600;
   text-align: center;
 }
 
-.place_order_btn {
+.place_order_btn,
+.checkout_container > button {
   border: none;
-  border-radius: 7px;
-  padding: 12px;
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
   cursor: pointer;
-  font-weight: bold;
-  background-color: white;
-  transition: background-color 0.2s, transform 0.2s;
+  font-weight: 600;
+  background-color: var(--accent);
+  color: white;
+  transition: background-color 0.2s, transform 0.15s;
 }
 
-.place_order_btn:hover {
-  background-color: rgb(173, 173, 233);
+.place_order_btn:hover,
+.checkout_container > button:hover {
+  background-color: var(--accent-hover);
   color: white;
-  transform: scale(1.03);
+  transform: none;
 }
 
 .place_order_btn:disabled {
   cursor: not-allowed;
   opacity: 0.6;
   transform: none;
+}
+
+@media (max-width: 860px) {
+  .checkout_layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order_summary {
+    position: static;
+  }
 }

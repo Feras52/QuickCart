@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #f4f6f8;
+  --bg-soft: #eef2f6;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #0f172a;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --danger: #dc2626;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --nav-height: 72px;
+  --font: "Outfit", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top left, #e8eef5 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, #e6f2f0 0%, transparent 45%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+a {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
