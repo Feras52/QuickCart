@@ -1,14 +1,17 @@
+import { useState, useEffect } from "react";
+
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import { data } from "../../public/products.tsx";
 import Card from "../components/Card";
-
-import { useState } from "react";
-import "./Shop.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+
+import { db } from "../config/firebase";
+import { collection, getDocs } from "firebase/firestore";
+
+import "./Shop.css";
 
 function Shop() {
   const settings = {
@@ -22,34 +25,43 @@ function Shop() {
     slidesPerRow: 1,
   };
 
+  const [data, setData] = useState<any[]>([]);
   const [filter, setFilter] = useState("All");
   const [search_word, setSearch_word] = useState("");
 
-  const items =
-    search_word !== ""
-      ? data.filter((item: any) => item.name.toLowerCase().includes(search_word.toLowerCase()))
-      : filter === "All"
-      ? data
-      : data.filter((item: any) => item.category === filter);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productsCollection = collection(db, "products");
+      const querySnapshot = await getDocs(productsCollection);
 
-  /*if (search_word !==""){
-      items = data.filter;
-    }
-    else{
-      if(filter ==="all"){
-        items = data
-      }
-      else{
-        items = data.fitler
-      }
-    }
-    */
+      const productsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setData(productsData);
+    };
+
+    fetchProducts();
+  }, []);
+
+  let items;
+
+  if (search_word !== "") {
+    items = data.filter((item: any) =>
+      item.name.toLowerCase().includes(search_word.toLowerCase()),
+    );
+  } else if (filter === "All") {
+    items = data;
+  } else {
+    items = data.filter((item: any) => item.category === filter);
+  }
 
   return (
     <>
       <NavBar />
 
-      <main className="home_main" >
+      <main className="home_main">
         <div id="searchbar_container">
           <input
             id="search_input"
@@ -69,12 +81,13 @@ function Shop() {
             #electronics <i className="bi bi-cpu"></i>
           </button>
           <button onClick={() => setFilter("Sport")}>
-            #sport <img src="sport icon.png" />{" "}
+            #sport <img src="sport icon.png" />
           </button>
           <button onClick={() => setFilter("Clothing")}>
-            #clothing <img src="shirt icon.png" />{" "}
+            #clothing <img src="shirt icon.png" />
           </button>
         </div>
+
         <div id="home_slider_container">
           <Slider {...settings}>
             {items.map((item: any) => (
@@ -90,8 +103,10 @@ function Shop() {
           </Slider>
         </div>
       </main>
-        <Footer />
+
+      <Footer />
     </>
   );
 }
+
 export default Shop;

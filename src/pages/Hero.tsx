@@ -4,12 +4,15 @@ import "./Hero.css";
 
 import { useNavigate } from "react-router-dom";
 
+//import {remplir} from '../seed.tsx';
+
 function Hero() {
   const navigate = useNavigate();
 
   return (
     <>
       <NavBar />
+      {/* <button onClick={remplir} >Remplir</button> */}
       <section id="banner">
         <h1>Your World of Shopping, Simplified.</h1>
         <h2>

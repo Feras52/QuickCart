@@ -62,7 +62,7 @@ function Cart() {
           <h2>Total: ${getTotalPrice().toFixed(2)}</h2>
 
           <div className="cart_actions">
-            <button onClick={() => navigate("/Home")}>Continue Shopping</button>
+            <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
             <button onClick={() => navigate("/Checkout")}>Checkout</button>
           </div>
         </div>
