@@ -1,7 +1,7 @@
-// temp file for seeding product data from products.tsx file to firebase firestore 
+/* temp file for seeding product data from products.tsx file to firebase firestore 
 import {data as products} from '../public/products';
 import {collection, addDoc} from 'firebase/firestore';
-import {db} from './config/firebase.ts';
+import {db} from '../src/config/firebase.ts';
 
 export async function remplir (){
     try{
@@ -16,3 +16,4 @@ export async function remplir (){
         console.log(error);
     }
 }
+*/
