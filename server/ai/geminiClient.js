@@ -27,7 +27,7 @@ export async function createProductEmbedding(ragText) {
     },
   });
 
-  const embedding = response.embedding.values;
+  const embedding = response.embeddings?.[0]?.values;
 
   if (!Array.isArray(embedding) || embedding.length !== dimension) {
     throw new Error(
