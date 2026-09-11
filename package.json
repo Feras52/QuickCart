@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "index:products": "node server/scripts/indexProducts.js"
+    
   },
   "dependencies": {
+    "@google/genai": "^2.22.0",
     "@stripe/react-stripe-js": "^6.5.0",
     "@stripe/stripe-js": "^9.7.0",
     "bootstrap": "^5.3.8",
