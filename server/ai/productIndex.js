@@ -7,7 +7,7 @@ export function createRagText(product) {
   const category = product.category;
   const price = product.price;
   const description = product.description;
-  const tags = product.tags ? product.tags.sort().join(", ") : "";
+  const tags = product.tags ? [...product.tags].sort().join(", ") : "";
 
   return `Name: ${name}\nCategory: ${category}\nPrice: ${price.toFixed(2)} USD\nDescription: ${description}\nTags: ${tags}`;
 }
