@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "index:products": "node server/scripts/indexProducts.js",
-    "test:rag": "node server/scripts/testRag.js"
+    "test:rag": "node server/scripts/testRag.js",
+    "server": "node server/server.js"
   },
   "dependencies": {
     "@google/genai": "^2.22.0",
