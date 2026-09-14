@@ -1,166 +1,63 @@
 
-# QuickCart - E-Commerce Web App
-
-  
+# QuickCart - Modern E-Commerce Web App with AI RAG Assistant
 
 ## Introduction
+**QuickCart** est une application web e-commerce moderne et performante construite avec React, Vite et TypeScript. 
 
-  
+L'application offre un parcours d'achat complet : recherche intelligente assistée par IA, consultation d'un catalogue dynamique hébergé sur Firestore, gestion d'un panier persistant, authentification sécurisée et paiement par carte bancaire via Stripe en mode test.
 
-QuickCart est une application web e-commerce construite avec React, Vite et TypeScript.
+---
 
-L'application permet aux utilisateurs de parcourir des produits, filtrer et rechercher des articles, créer un compte, se connecter, ajouter des produits au panier, passer une commande avec paiement Stripe en mode test, puis consulter leurs commandes précédentes depuis leur page profil.
+## Nouvelles Fonctionnalités Majeures 
 
-  
+* **Assistant IA Shopping RAG (Retrieval-Augmented Generation) :** Intégration d'un chatbot intelligent alimenté par l'API Google Gemini (`gemini-3.6-flash` & `gemini-embedding-001`). Il analyse la sémantique des questions des utilisateurs via la recherche vectorielle Firestore (`findNearest`) pour recommander des produits pertinents du catalogue en temps réel sans halluciner.
+* **UI/UX Moderne & Esthétique :** Refonte visuelle complète de l'interface utilisateur pour un rendu élégant, épuré et responsive.
+* **Migration vers Firestore Database :** Le catalogue produit a été entièrement migré depuis des fichiers statiques locaux vers la base de données dynamique Cloud Firestore.
+* **Optimisation des Images :** Remplacement des images locales par des URLs Unsplash haute définition optimisées pour le web.
 
-----------
+---
 
-  
+##  Technologies Utilisées
 
-## Technologies Utilisées
+### Frontend
+* **React 18 & Vite** — Pour une interface utilisateur réactive et un environnement de développement rapide.
+* **TypeScript** — Typage statique pour un code robuste et maintenable.
+* **Zustand** — Gestion globale de l'état du panier avec persistance locale (`localStorage`).
+* **React Router** — Navigation fluide entre les pages de l'application.
+* **CSS Modern / Bootstrap Icons** — Design sur-mesure et iconographie.
 
-  
+### Backend & IA
+* **Node.js & Express.js** — API Backend gérant la création des `PaymentIntents` Stripe, le pipeline RAG et la gestion du rate limiting.
+* **Google Gemini API SDK (`@google/genai`)** — Génération d'embeddings vectoriels et traitement du langage naturel pour le chatbot.
+* **Stripe SDK** — Gestion sécurisée des paiements par carte.
 
--  **React** — Pour l'interface utilisateur
+### Base de Données & Services Cloud
+* **Firebase Authentication** — Gestion des inscriptions, connexions et sessions utilisateurs.
+* **Cloud Firestore** — Base de données NoSQL pour les comptes utilisateurs, le catalogue produits dynamiques, les embeddings vectoriels (768 dimensions) et l'historique des commandes.
+* **Firebase Admin SDK** — Accès serveur sécurisé à Firestore pour l'indexation vectorielle automatique.
 
-  
+---
 
--  **Vite** — Outil de développement rapide pour lancer et contruire le projet
+##  Fonctionnalités Principales
 
-  
+* **🤖 Chatbot IA RAG :** Posez n'importe quelle question sur les produits (ex: *"Avez-vous des équipements légers pour le sport ?"*) et recevez des réponses personnalisées basées directement sur le stock.
+* **🛍️ Catalogue Dynamique & Recherche :** Affichage en temps réel des produits Firestore avec filtrage par catégorie et recherche textuelle.
+* **🔒 Authentification Firebase :** Inscription, connexion, déconnexion et conservation de session après rafraîchissement.
+* **🛒 Panier d'Achat Persistant :** Ajout d'articles, ajustement des quantités et calcul automatique du total (conservé après refresh).
+* **💳 Paiement Stripe Sécurisé :** Formulaire de livraison avec validation et paiement en mode test via PaymentIntents.
+* **📋 Confirmation & Profil Utilisateur :** Tableau de bord affichant le détail des commandes passées et les informations de compte.
 
--  **TypeScript** — Ajout du typage pour rendre le code plus clair et plus sûr
 
-  
+---
 
--  **Firebase Authentication** — Gestion de l'inscription, connexion, déconnexion et session utilisateur
+##  Prochaines Étapes
 
-  
+- [ ] **Dashboard Administrateur :** Interface admin pour ajouter, modifier ou supprimer des produits Firestore sans passer par la console.
+- [ ] **Gestion Dynamique du Stock :** Suivi des quantités disponibles et blocage des commandes en cas de rupture de stock.
+- [ ] **Protection des Routes (Auth Guard) :** Redirection automatique des utilisateurs non authentifiés essayant d'accéder aux pages `/checkout` et `/profile`.
+- [ ] **Historique du Chat IA :** Sauvegarde des conversations avec l'assistant IA directement dans le profil utilisateur Firestore.
 
--  **Firestore Database** — Stockage des informations utilisateurs et des commandes
-
-  
-
--  **Zustand** — Gestion globale de l'état du panier avec persistance locale
-
-  
-
--  **Stripe** — Intégration du paiement par carte en mode test
-
-  
-
--  **Express.js** — Petit serveur backend pour créer les PaymentIntents Stripe de manière sécurisée
-
-  
-
--  **React Router** — Navigation entre les pages de l'application
-
-  
-
--  **CSS / Bootstrap Icons** — Style de l'interface et icônes
-
-  
-
-----------
-
-  
-
-## Fonctionnalités
-
-  
-
--  **Catalogue de Produits** — Affichage de plusieurs produits avec nom, prix, catégorie et image.
-
-  
-
--  **Recherche et Filtrage** — Recherche par nom de produit et filtrage par catégorie.
-
-  
-
--  **Authentification Firebase** — Création de compte, connexion, déconnexion et maintien de session après refresh.
-
-  
-
--  **Panier d'Achat** — Ajout de produits au panier, modification des quantités, suppression d'articles et calcul automatique du total.
-
-  
-
--  **Persistance du Panier** — Le panier reste sauvegardé après un refresh grâce à Zustand et localStorage.
-
-  
-
--  **Checkout** — Formulaire d'adresse de livraison avec validation des champs.
-
-  
-
--  **Paiement Stripe** — Paiement par carte en mode test avec création de PaymentIntent via un backend Express.
-
-  
-
--  **Confirmation de Commande** — Affichage de l'ID de commande, des produits commandés, de l'adresse de livraison, du statut de paiement et de la date estimée de livraison.
-
-  
-
--  **Profil Utilisateur** — Affichage des informations utilisateur et de l'historique des commandes précédentes.
-
-  
-
--  **Page About Us** — Page de présentation avec slider visuel.
-
-  
-
-----------
-
-  
-  
-
-## Ce que J'ai Appris
-
-  
-
--  **React Context** — Utiliser un contexte global pour partager l'utilisateur connecté dans toute l'application sans passer les props manuellement.
-
-  
-
--  **Zustand State Management** — Gérer un état global simplement, notamment pour le panier d'achat et sa persistance avec localStorage.
-
-  
-
--  **Stripe Payment** — Comprendre le fonctionnement d'un paiement sécurisé avec Stripe, la différence entre clé publique et clé secrète, et le rôle d'un PaymentIntent.
-
-  
-
--  **APIs et Backend** — Créer un petit backend Express, envoyer des requêtes HTTP depuis React avec `fetch`, recevoir une réponse JSON et connecter le frontend au backend.
-
-  
-
--  **Callback Functions** — Utiliser des fonctions callback pour faire communiquer les composants, par exemple déclencher la sauvegarde d'une commande après un paiement réussi.
-
-  
-
-----------
-
-  
-
-
-## Prochaines Étapes
-
-- **Amélioration UI/UX** - Refaire l'interface avec un design plus moderne, esthétique et responsive.
-
-- **Chatbot IA** - Ajouter un assistant intelligent pour aider les utilisateurs à trouver des produits, répondre à leurs questions, proposer des articles.
-
-- **Dashboard Administrateur** - Créer une interface admin pour gérer les produits, consulter les commandes, modifier les statuts des commandes et suivre les utilisateurs.
-
-- **Gestion Dynamique des Produits** - Déplacer les produits depuis le fichier statique `products.tsx` vers Firestore afin de pouvoir ajouter, modifier ou supprimer des produits dynamiquement.
-
-- **Gestion du Stock** - Ajouter une quantité disponible pour chaque produit et empêcher l'achat lorsqu'un article n'est plus disponible.
-
-- **Protection des Routes** - Protéger les pages comme Checkout et Profile afin que seuls les utilisateurs connectés puissent y accéder.
-
-- **Meilleure Gestion des Erreurs** - Améliorer les messages d'erreur Firebase, Stripe et réseau avec des messages plus clairs et plus faciles à comprendre pour l'utilisateur.
-
-- **Optimisation des Images** - Remplacer les grandes images base64 par des URLs optimisées.
-  
+---
 
 ## Comment Exécuter le Projet
 
@@ -180,6 +77,7 @@ L'application permet aux utilisateurs de parcourir des produits, filtrer et rech
 
 - Clés Stripe test dans `.env`
 
+- Clé d'API Google Gemini (AI Studio) dans `.env`
   
 
 **Étapes d'Installation :**
@@ -212,7 +110,7 @@ npm  install
 
   
 
-3.  **Changer le nom de fichier .env.example à .env et inserer vos clés :**
+3.  **Changez le nom de fichier .env.example à .env et inserer vos clés :**
 
   
 
@@ -222,7 +120,7 @@ npm  install
 
 ```bash
 
-node  server/paymentServer.cjs
+node  server/server.js
 
 ```
 
