@@ -1,0 +1,120 @@
+.ai-assistant {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+}
+
+.ai-open-button {
+  border: none;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.ai-chat-panel {
+  width: min(360px, calc(100vw - 32px));
+  height: 480px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ai-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.ai-close-button {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ai-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  background: #f9fafb;
+}
+
+.ai-message {
+  width: fit-content;
+  max-width: 85%;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.ai-message-user {
+  margin-left: auto;
+  background: #111827;
+  color: #ffffff;
+}
+
+.ai-message-assistant {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.ai-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ai-chat-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.ai-chat-form button {
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: #ffffff;
+  padding: 10px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ai-chat-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 480px) {
+  .ai-assistant {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .ai-chat-panel {
+    height: 70vh;
+  }
+}
