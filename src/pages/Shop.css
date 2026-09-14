@@ -33,7 +33,7 @@
   box-shadow: var(--shadow);
 }
 
-#category_container button:focus {
+#category_container button.active {
   outline: none;
   background-color: var(--primary);
   border-color: var(--primary);

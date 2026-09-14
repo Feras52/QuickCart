@@ -45,16 +45,18 @@ function Shop() {
     fetchProducts();
   }, []);
 
-  let items;
+  let items = data;
 
+  // 1. First, apply the category filter (if it isn't "All")
+  if (filter !== "All") {
+    items = items.filter((item: any) => item.category === filter);
+  }
+
+  // 2. Then, apply the search word filter to the remaining items
   if (search_word !== "") {
-    items = data.filter((item: any) =>
+    items = items.filter((item: any) =>
       item.name.toLowerCase().includes(search_word.toLowerCase()),
     );
-  } else if (filter === "All") {
-    items = data;
-  } else {
-    items = data.filter((item: any) => item.category === filter);
   }
 
   return (
@@ -73,18 +75,39 @@ function Shop() {
         </div>
 
         <div id="category_container">
-          <button onClick={() => setFilter("All")}>All</button>
-          <button onClick={() => setFilter("Kitchen")}>
+          <button
+            className={filter === "All" ? "active" : ""}
+            onClick={() => setFilter("All")}
+          >
+            All
+          </button>
+
+          <button
+            className={filter === "Kitchen" ? "active" : ""}
+            onClick={() => setFilter("Kitchen")}
+          >
             #kitchen <i className="bi bi-fork-knife"></i>
           </button>
-          <button onClick={() => setFilter("Electronics")}>
+
+          <button
+            className={filter === "Electronics" ? "active" : ""}
+            onClick={() => setFilter("Electronics")}
+          >
             #electronics <i className="bi bi-cpu"></i>
           </button>
-          <button onClick={() => setFilter("Sport")}>
-            #sport <img src="sport icon.png" />
+
+          <button
+            className={filter === "Sport" ? "active" : ""}
+            onClick={() => setFilter("Sport")}
+          >
+            #sport <img src="sport icon.png" alt="Sport" />
           </button>
-          <button onClick={() => setFilter("Clothing")}>
-            #clothing <img src="shirt icon.png" />
+
+          <button
+            className={filter === "Clothing" ? "active" : ""}
+            onClick={() => setFilter("Clothing")}
+          >
+            #clothing <img src="shirt icon.png" alt="Clothing" />
           </button>
         </div>
 
